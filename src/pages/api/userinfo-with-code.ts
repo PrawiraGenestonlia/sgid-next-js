@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { sgidClient } from '@/clients/sgid.client'
-import { userSessionService } from '@/services/user-session.service'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
