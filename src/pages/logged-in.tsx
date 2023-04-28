@@ -8,7 +8,10 @@ export default function LoggedInScreen() {
   useEffect(() => {
     fetch('/api/userinfo')
       .then((res) => res.json())
-      .then((data) => setUserInfo(data))
+      .then((data) => {
+        if (data.error) router.push('/')
+        else setUserInfo(data)
+      })
       .catch((err) => router.push('/'))
   }, [])
 
