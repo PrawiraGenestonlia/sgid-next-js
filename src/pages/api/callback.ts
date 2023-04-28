@@ -11,6 +11,7 @@ export default async function handler(
   const session = req.cookies['sgid-session'] || ''
   const sessionData = userSessionService.getSession(session)
 
+  // MOST IMPORTANT LINE TO RP
   //   if (sessionData['state'] !== state) {
   //     res.status(400).json({ error: 'Invalid state' })
   //   } else {
