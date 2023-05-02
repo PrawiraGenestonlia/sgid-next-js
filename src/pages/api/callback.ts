@@ -11,12 +11,12 @@ export default async function handler(
   const session = req.cookies['sgid-session'] || ''
   const sessionData = userSessionService.getSession(session)
 
-  // MOST IMPORTANT LINE TO RP
-  //   if (sessionData['state'] !== state) {
-  //     res.status(400).json({ error: 'Invalid state' })
-  //   } else {
-  const { sub, accessToken } = await sgidClient.callback(code as string)
-  userSessionService.updateSession(session, { accessToken })
-  res.redirect('/logged-in')
-  //   }
+  // state check to prevent CSRF
+  if (sessionData['state'] !== state) {
+    res.status(400).json({ error: 'Invalid state' })
+  } else {
+    const { sub, accessToken } = await sgidClient.callback(code as string)
+    userSessionService.updateSession(session, { accessToken })
+    res.redirect('/logged-in')
+  }
 }

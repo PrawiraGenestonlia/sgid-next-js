@@ -10,7 +10,7 @@ export default async function handler(
   try {
     const session = req.cookies['sgid-session'] || ''
     const sessionData = userSessionService.getSession(session)
-    const { sub, data } = await sgidClient.userinfo(
+    const { data } = await sgidClient.userinfo(
       sessionData['accessToken'] as string
     )
     res.status(200).json({ data, state: sessionData['state'] })

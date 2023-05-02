@@ -18,7 +18,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res
     .setHeader(
       'Set-Cookie',
-      serialize('sgid-session', sessionToken, { path: '/' })
+      serialize('sgid-session', sessionToken, { path: '/', httpOnly: true })
     )
     .redirect(url)
 }

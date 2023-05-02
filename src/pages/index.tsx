@@ -13,7 +13,7 @@ export default function Home() {
       <div>
         <button
           onClick={async () => {
-            router.push('/api/auth-url?icecream=vanilla&toast=bread')
+            router.push('/api/login?icecream=vanilla&toast=bread')
           }}
         >
           login
